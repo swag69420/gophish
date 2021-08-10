@@ -1,0 +1,20 @@
+- name: Change /etc/hostname 
+  hostname:
+    name: "{{ hostname }}"
+
+- name: Ensure ufw is installed on the machine
+  package: 
+    name: ufw
+    state: present
+
+- name: Allow TCP 22 for SSH.
+  ufw: 
+    rule: allow
+    port: '22'
+    proto: tcp
+
+- name: Allow TCP 80 Gophish.
+  ufw: 
+    rule: allow
+    port: '80'
+    protos: tcp
